@@ -2,12 +2,21 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any
 from unittest.mock import MagicMock
 
 import pytest
 from typer.testing import CliRunner
+
+
+# Rich formatting in Typer help output adds ANSI escape codes.
+ansi_escape = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
+
+
+def strip_ansi(text: str) -> str:
+    return ansi_escape.sub("", text)
 
 from ytpl_dl.cli import app
 from ytpl_dl.config import DownloadConfig
@@ -31,17 +40,18 @@ class TestHelp:
         """Test 1: download --help shows all options with descriptions."""
         result = runner.invoke(app, ["--help"])
         assert result.exit_code == 0
-        assert "playlist_url" in result.output
-        assert "--output" in result.output
-        assert "--format" in result.output
-        assert "--merge-format" in result.output
-        assert "--concurrent" in result.output
-        assert "--retries" in result.output
-        assert "--proxy" in result.output
-        assert "--no-archive" in result.output
-        assert "--overwrite" in result.output
-        assert "--verbose" in result.output
-        assert "--json-log" in result.output
+        clean = strip_ansi(result.output)
+        assert "playlist_url" in clean
+        assert "--output" in clean
+        assert "--format" in clean
+        assert "--merge-format" in clean
+        assert "--concurrent" in clean
+        assert "--retries" in clean
+        assert "--proxy" in clean
+        assert "--no-archive" in clean
+        assert "--overwrite" in clean
+        assert "--verbose" in clean
+        assert "--json-log" in clean
 
 
 # ======================================================================
