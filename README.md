@@ -1,6 +1,8 @@
 # Yes Another Youtube Video List Downloader
 
-Production-grade YouTube playlist downloader with maximum quality support, resume capability, and comprehensive error handling.
+[![CI](https://github.com/Dhurzo/YAYVlD/actions/workflows/ci.yml/badge.svg)](https://github.com/Dhurzo/YAYVlD/actions/workflows/ci.yml)
+
+YouTube playlist downloader with maximum quality support, resume capability, and comprehensive error handling.
 
 **Built with GLM-4.7 using Spec-Driven Development (AI)** - This software was developed using GLM-4.7's advanced AI capabilities with a specification-driven development approach, ensuring high code quality, comprehensive test coverage, and adherence to modern Python best practices.
 
