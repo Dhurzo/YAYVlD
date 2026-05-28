@@ -1,4 +1,4 @@
-# ytpl-dl
+# Yes Another Youtube Video List Downloader
 
 Production-grade YouTube playlist downloader with maximum quality support, resume capability, and comprehensive error handling.
 
