@@ -10,6 +10,10 @@ from unittest.mock import MagicMock
 import pytest
 from typer.testing import CliRunner
 
+from ytpl_dl.cli import app
+from ytpl_dl.config import DownloadConfig
+from ytpl_dl.errors import PlaylistNotFoundError
+from ytpl_dl.playlist import DownloadSummary
 
 # Rich formatting in Typer help output adds ANSI escape codes.
 ansi_escape = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
@@ -18,10 +22,6 @@ ansi_escape = re.compile(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])")
 def strip_ansi(text: str) -> str:
     return ansi_escape.sub("", text)
 
-from ytpl_dl.cli import app
-from ytpl_dl.config import DownloadConfig
-from ytpl_dl.errors import PlaylistNotFoundError
-from ytpl_dl.playlist import DownloadSummary
 
 runner = CliRunner()
 
